@@ -65,14 +65,14 @@ const Results = ({ ammount, year, rate, type }: ResultProps) => {
       <ResultsContainer>
         <Container>
           <CompletedText>Your monthly repayments</CompletedText>
-          <MonthlyRepayment>£{monthlyPayment.toFixed(2)}</MonthlyRepayment>
+          <MonthlyRepayment>£{monthlyPayment}</MonthlyRepayment>
         </Container>
 
         <Line />
 
         <Container>
           <CompletedText>Total you'll repay over the term</CompletedText>
-          <TermRepayment>£{totalRepayment.toFixed(2)}</TermRepayment>
+          <TermRepayment>£{totalRepayment}</TermRepayment>
         </Container>
       </ResultsContainer>
     </CompletedResultContainer>
