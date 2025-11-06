@@ -13,7 +13,6 @@ import {
   TextContainer,
 } from "./styles";
 import EmptyImage from "../../../assets/icons/illustration-empty.svg";
-import { useState } from "react";
 
 interface ResultProps {
   ammount?: number;
@@ -23,7 +22,6 @@ interface ResultProps {
 }
 
 const Results = ({ ammount, year, rate, type }: ResultProps) => {
-  const [calculationType, setCalculationType] = useState("");
   if (!ammount || !year || !rate) {
     return (
       <EmptyResultContainer>
