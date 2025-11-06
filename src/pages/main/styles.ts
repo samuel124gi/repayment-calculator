@@ -1,6 +1,9 @@
 import styled from "@emotion/styled";
 import colors from "../../styles/colors";
 
+interface ErrorProps {
+  error?: boolean;
+}
 export const MainContainer = styled.div`
   align-items: center;
   justify-content: center;
@@ -66,13 +69,13 @@ export const Label = styled.label`
   line-height: 150%;
 `;
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.div<ErrorProps>`
   display: flex;
   width: 100%;
   align-items: center;
   height: 48px;
   border-radius: 4px;
-  border: 1.5px solid ${colors.secondary02};
+  border: 1.5px solid ${({ error }) => (error ? "red" : "#6B94A8")};
   overflow: hidden;
 `;
 export const RadioContainer = styled.div`
@@ -86,14 +89,14 @@ export const RadioContainer = styled.div`
   overflow: hidden;
 `;
 
-export const InputSide = styled.div`
+export const InputSide = styled.div<ErrorProps>`
   height: 100%;
   padding: 12px 16px;
   display: flex;
   justify-content: center;
   font-size: 18px;
-  background: ${colors.primary01};
-  color: ${colors.secondary01};
+  background: ${({ error }) => (error ? "red" : "#E4F4FD")};
+  color: ${({ error }) => (error ? "#FFFFFF" : "#4E6E7E")};
   font-weight: bold;
   line-height: 125%;
 `;

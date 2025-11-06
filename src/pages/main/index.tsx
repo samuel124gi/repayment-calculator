@@ -28,6 +28,7 @@ interface FormValues {
   rate: number;
   radio: string;
 }
+
 const Main = () => {
   const {
     register,
@@ -58,8 +59,8 @@ const Main = () => {
             <Label>
               Mortgage Amount
               <ErrorContainer>
-                <InputContainer>
-                  <InputSide>£</InputSide>
+                <InputContainer error={!!errors.ammount}>
+                  <InputSide error={!!errors.ammount}>£</InputSide>
                   <Input
                     type="number"
                     {...register("ammount", {
@@ -74,14 +75,14 @@ const Main = () => {
               <Label>
                 Mortgage Term
                 <ErrorContainer>
-                  <InputContainer>
+                  <InputContainer error={!!errors.year}>
                     <Input
                       type="number"
                       {...register("year", {
                         required: "This field is required",
                       })}
                     />
-                    <InputSide>Years</InputSide>
+                    <InputSide error={!!errors.year}>Years</InputSide>
                   </InputContainer>
                   <Error>{errors.year?.message}</Error>
                 </ErrorContainer>
@@ -89,14 +90,14 @@ const Main = () => {
               <Label>
                 Interest Rate
                 <ErrorContainer>
-                  <InputContainer>
+                  <InputContainer error={!!errors.rate}>
                     <Input
                       type="text"
                       {...register("rate", {
                         required: "This field is required",
                       })}
                     />
-                    <InputSide>%</InputSide>
+                    <InputSide error={!!errors.rate}>%</InputSide>
                   </InputContainer>
                   <Error>{errors.rate?.message}</Error>
                 </ErrorContainer>
@@ -117,6 +118,7 @@ const Main = () => {
                   type="radio"
                   value="interest-only"
                   {...register("radio", { required: true })}
+                  // rate={rate} type="interest-only"
                 />
                 <RadioText>Interest Only</RadioText>
               </RadioContainer>
@@ -132,6 +134,7 @@ const Main = () => {
           ammount={values?.ammount}
           year={values?.year}
           rate={values?.rate}
+          type={values?.radio as "repayment" | "interest-only"}
         />
       </InnerContainer>
     </MainContainer>
